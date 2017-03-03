@@ -90,9 +90,12 @@ class Redportal:
         if not message:
             message =\
                 await self.bot.send_message(ctx.message.channel, embed=cog)
-            await self.bot.add_reaction(message, "⬅")
-            await self.bot.add_reaction(message, "❌")
-            await self.bot.add_reaction(message, "➡")
+            try:
+                await self.bot.add_reaction(message, "⬅")
+                await self.bot.add_reaction(message, "❌")
+                await self.bot.add_reaction(message, "➡")
+            except:
+                pass
         else:
             message = await self.bot.edit_message(message, embed=cog)
         react = await self.bot.wait_for_reaction(
